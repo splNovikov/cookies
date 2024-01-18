@@ -33,7 +33,7 @@ export function Auth(): ReactElement {
       </label>
 
       <button type="submit" disabled={loading}>
-        {loading ? 'Trying to login...' : 'Login'}
+        {loading ? 'Trying to login.....' : 'Login'}
       </button>
     </form>
   );
