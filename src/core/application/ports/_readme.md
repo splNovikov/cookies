@@ -1,2 +1,3 @@
 #### **Ports**
 
+A port is a consumer agnostic entry and exit point to/from the application. In many languages, it will be an interface. For example, it can be an interface used to perform searches in a search engine. In our application, we will use this interface as an entry and/or exit point with no knowledge of the concrete implementation that will actually be injected where the interface is defined as a type hint.
