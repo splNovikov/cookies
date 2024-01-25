@@ -1,8 +1,8 @@
 import React, { ReactElement, useState } from 'react';
-import { useOrderProducts } from '../../application/orderProducts';
-import { UserName } from '../../domain/user';
-import { useCartStorage, useUserStorage } from '../../services/storageAdapter';
 import styles from './Buy.module.css';
+import { useOrderProducts } from '../../core/application/services/orderProducts';
+import { useCartStorage, useUserStorage } from '../../primaryAdapters/storageAdapter';
+import { UserName } from '../../core/domain/model/User';
 
 export function Buy(): ReactElement | null {
   const { orderProducts } = useOrderProducts();

@@ -1,8 +1,9 @@
 import React, { Fragment, ReactElement } from 'react';
 
-import { Product, ingredients } from '../../domain/product';
-import { hasAllergy, hasPreference } from '../../domain/user';
-import { useUserStorage } from '../../services/storageAdapter';
+import { Product } from '../../core/domain/model/Product';
+import { useUserStorage } from '../../primaryAdapters/storageAdapter';
+import { ingredients } from '../../core/domain/model/Ingredient';
+import { hasAllergy, hasPreference } from '../../core/domain/services/user';
 
 type ToppingsProps = {
   cookie: Product;

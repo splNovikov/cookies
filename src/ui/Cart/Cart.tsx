@@ -1,18 +1,20 @@
 import { ReactElement } from 'react';
-import { totalPrice } from '../../domain/product';
-import { useCartStorage } from '../../services/storageAdapter';
 import { Cookie } from '../Cookie';
 import styles from './Cart.module.css';
+import { Product } from '../../core/domain/model/Product';
+import { useCartStorage } from '../../primaryAdapters/storageAdapter';
+import { totalPrice } from '../../core/application/services/totalPrice';
 
 export function Cart(): ReactElement {
   const { cart } = useCartStorage();
+  console.log('cart', cart);
 
   return (
     <section>
       <h2>Cart</h2>
 
       <ul className={styles.list}>
-        {cart.products.map((product) => (
+        {cart.products.map((product: Product) => (
           <li key={product.id}>
             <Cookie cookie={product} />
           </li>

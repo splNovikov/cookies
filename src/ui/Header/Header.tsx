@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { ReactElement } from 'react';
-import { useCartStorage, useUserStorage } from '../../services/storageAdapter';
 import styles from './Header.module.css';
+import { useCartStorage, useUserStorage } from '../../primaryAdapters/storageAdapter';
 
 export function Header(): ReactElement {
   const { user } = useUserStorage();
   const { cart } = useCartStorage();
+  console.log('cart', cart);
 
   return (
     <header className={styles.header}>

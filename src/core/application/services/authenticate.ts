@@ -1,15 +1,16 @@
-import { User, UserName } from '../domain/user';
-import { useAuth } from '../services/authAdapter';
-import { useUserStorage } from '../services/storageAdapter';
-
-// Note that the port interfaces are in the _application layer_,
-// but their implementation is in the _adapter_ layer.
-import { AuthenticationService, UserStorageService } from './ports';
+import { User, UserName } from '../../domain/model/User';
+import { UserStorageService } from '../ports/storage';
+import { AuthenticationService } from '../ports/authentication';
+import { useUserStorage } from '../../../primaryAdapters/storageAdapter';
+import { useAuth } from '../../../secondaryAdapters/authAdapter';
 
 type UseAuthenticateProps = {
   user?: User;
   authenticate: (name: UserName, email: Email) => Promise<void>;
 };
+
+// Note that the port interfaces are in the _application layer_,
+// but their implementation is in the _adapter_ layer.
 export function useAuthenticate(): Readonly<UseAuthenticateProps> {
   // Usually, we access services through Dependency Injection.
   // Here we can use hooks as a crooked “DI-container”.

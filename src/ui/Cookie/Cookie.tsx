@@ -1,12 +1,13 @@
 import { ReactElement } from 'react';
 
-import { contains } from '../../domain/cart';
-import { Product } from '../../domain/product';
-import { useAddToCart } from '../../application/addToCart';
-
-import { useUserStorage, useCartStorage } from '../../services/storageAdapter';
-import styles from './Cookie.module.css';
 import { Toppings } from './Toppings';
+import { Product } from '../../core/domain/model/Product';
+import { useCartStorage, useUserStorage } from '../../primaryAdapters/storageAdapter';
+// todo: domain services???
+import { useAddToCart } from '../../core/application/services/addToCart';
+import { contains } from '../../core/domain/services/cart';
+
+import styles from './Cookie.module.css';
 
 type CookieProps = {
   cookie: Product;

@@ -1,4 +1,4 @@
-import { NotificationService } from '../application/ports';
+import { NotificationService } from '../core/application/ports/notification';
 
 export function useNotifier(): NotificationService {
   return {

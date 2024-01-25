@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
-import { Product } from '../../domain/product';
 import { useStore } from '../../services/store';
 import { Cookie } from '../Cookie';
 import styles from './Front.module.css';
+import { Product } from '../../core/domain/model/Product';
 
 export function Front(): ReactElement {
   const { cookies } = useStore();

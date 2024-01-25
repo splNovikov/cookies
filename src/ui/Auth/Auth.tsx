@@ -1,9 +1,9 @@
 import React, { ReactElement, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { UserName } from '../../domain/user';
-import { useAuthenticate } from '../../application/authenticate';
 import styles from './Auth.module.css';
+import { UserName } from '../../core/domain/model/User';
+import { useAuthenticate } from '../../core/application/services/authenticate';
 
 export function Auth(): ReactElement {
   const [name, setName] = useState<UserName>('');

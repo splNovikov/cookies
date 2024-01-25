@@ -1,6 +1,6 @@
 import { Fragment, ReactElement } from 'react';
-import { ingredients } from '../../domain/product';
-import { useUserStorage } from '../../services/storageAdapter';
+import { useUserStorage } from '../../primaryAdapters/storageAdapter';
+import { ingredients } from '../../core/domain/model/Ingredient';
 
 export function Profile(): ReactElement | null {
   const { user } = useUserStorage();

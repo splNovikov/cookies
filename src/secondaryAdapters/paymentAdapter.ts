@@ -1,4 +1,4 @@
-import { PaymentService } from '../application/ports';
+import { PaymentService } from '../core/application/ports/payment';
 import { fakeApi } from './api';
 
 export function usePayment(): PaymentService {
