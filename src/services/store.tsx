@@ -1,7 +1,6 @@
 import React, { useState, useContext, ReactNode, useMemo, ReactElement } from 'react';
 import { cookies } from './fakeData';
 import { Cart } from '../core/domain/model/Cart';
-import { Product } from '../core/domain/model/Product';
 
 const StoreContext = React.createContext<any>({});
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
