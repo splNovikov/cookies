@@ -1,16 +1,17 @@
 import React, { ReactElement, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import styles from './Auth.module.css';
+import { useAuthAdapter } from '../../primaryAdapters/authAdapter';
 import { UserName } from '../../core/domain/model/User';
-import { useAuthenticate } from '../../core/application/services/authenticate';
+
+import styles from './Auth.module.css';
 
 export function Auth(): ReactElement {
   const [name, setName] = useState<UserName>('');
   const [email, setEmail] = useState<Email>('');
   const [loading, setLoading] = useState(false);
 
-  const { user, authenticate } = useAuthenticate();
+  const { user, authenticate } = useAuthAdapter();
   if (user) return <Navigate to="/" />;
 
   async function handleSubmit(e: React.FormEvent): Promise<void> {

@@ -1,11 +1,14 @@
 import React, { ReactElement, useState } from 'react';
-import styles from './Buy.module.css';
-import { useOrderProducts } from '../../core/application/services/orderProducts';
-import { useCartStorage, useUserStorage } from '../../primaryAdapters/storageAdapter';
+
+import { useOrderAdapter } from '../../primaryAdapters/orderAdapter';
+// todo: secondary???
+import { useCartStorage, useUserStorage } from '../../secondaryAdapters/storageAdapter';
 import { UserName } from '../../core/domain/model/User';
 
+import styles from './Buy.module.css';
+
 export function Buy(): ReactElement | null {
-  const { orderProducts } = useOrderProducts();
+  const { orderProducts } = useOrderAdapter();
   const { user } = useUserStorage();
   const { cart } = useCartStorage();
 

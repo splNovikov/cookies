@@ -6,7 +6,7 @@ import { Buy } from '../Buy';
 import { Cart } from '../Cart';
 import { Orders } from '../Orders';
 import { Profile } from '../Profile';
-import { useUserStorage } from '../../primaryAdapters/storageAdapter';
+import { useUserStorage } from '../../secondaryAdapters/storageAdapter';
 
 export function User(): ReactElement {
   const { user } = useUserStorage();

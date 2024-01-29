@@ -1,5 +1,5 @@
 import { Fragment, ReactElement } from 'react';
-import { useUserStorage } from '../../primaryAdapters/storageAdapter';
+import { useUserStorage } from '../../secondaryAdapters/storageAdapter';
 import { ingredients } from '../../core/domain/model/Ingredient';
 
 export function Profile(): ReactElement | null {

@@ -1,7 +1,7 @@
 import React, { Fragment, ReactElement } from 'react';
 
 import { Product } from '../../core/domain/model/Product';
-import { useUserStorage } from '../../primaryAdapters/storageAdapter';
+import { useUserStorage } from '../../secondaryAdapters/storageAdapter';
 import { ingredients } from '../../core/domain/model/Ingredient';
 import { hasAllergy, hasPreference } from '../../core/domain/services/user';
 

@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { Cookie } from '../Cookie';
 import styles from './Cart.module.css';
 import { Product } from '../../core/domain/model/Product';
-import { useCartStorage } from '../../primaryAdapters/storageAdapter';
+import { useCartStorage } from '../../secondaryAdapters/storageAdapter';
 import { totalPrice } from '../../core/application/services/totalPrice';
 
 export function Cart(): ReactElement {

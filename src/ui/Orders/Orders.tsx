@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { useOrdersStorage } from '../../primaryAdapters/storageAdapter';
+import { useOrdersStorage } from '../../secondaryAdapters/storageAdapter';
 
 export function Orders(): ReactElement | null {
   const { orders } = useOrdersStorage();

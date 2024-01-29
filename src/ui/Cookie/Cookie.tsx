@@ -2,10 +2,11 @@ import { ReactElement } from 'react';
 
 import { Toppings } from './Toppings';
 import { Product } from '../../core/domain/model/Product';
-import { useCartStorage, useUserStorage } from '../../primaryAdapters/storageAdapter';
-// todo: domain services???
-import { useAddToCart } from '../../core/application/services/addToCart';
+// todo: import from domain-service???
 import { contains } from '../../core/domain/services/cart';
+// todo: import from secondary-adapters???
+import { useCartStorage, useUserStorage } from '../../secondaryAdapters/storageAdapter';
+import { useCartAdapter } from '../../primaryAdapters/cartAdapter';
 
 import styles from './Cookie.module.css';
 
@@ -16,7 +17,7 @@ type CookieProps = {
 export function Cookie({ cookie }: Readonly<CookieProps>): ReactElement {
   const { user } = useUserStorage();
   const { cart } = useCartStorage();
-  const { addToCart } = useAddToCart();
+  const { addToCart } = useCartAdapter();
 
   return (
     <article className={styles.cookie}>
@@ -25,7 +26,7 @@ export function Cookie({ cookie }: Readonly<CookieProps>): ReactElement {
       <Toppings cookie={cookie} />
 
       {!!user && (
-        <button type="button" onClick={() => addToCart(user, cookie)}>
+        <button type="button" onClick={() => addToCart(cookie)}>
           {cookie.price / 100} ₽
         </button>
       )}

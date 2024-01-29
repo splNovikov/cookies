@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ReactElement } from 'react';
 import styles from './Header.module.css';
-import { useCartStorage, useUserStorage } from '../../primaryAdapters/storageAdapter';
+import { useCartStorage, useUserStorage } from '../../secondaryAdapters/storageAdapter';
 
 export function Header(): ReactElement {
   const { user } = useUserStorage();
