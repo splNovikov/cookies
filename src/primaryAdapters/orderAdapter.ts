@@ -1,18 +1,17 @@
+import { diContainer } from 'di/inversify.config';
+
+import { OrderAppService } from '../core/application/services/OrderAppService';
 import { User } from '../core/domain/model/User';
 import { Cart } from '../core/domain/model/Cart';
 import { Order } from '../core/domain/model/Order';
-import { usePayment } from '../secondaryAdapters/paymentAdapter';
-import { useCartStorage, useOrdersStorage } from '../secondaryAdapters/storageAdapter';
-import { diContainer } from '../di/inversify.config';
 
-import { OrderAppService } from '../core/application/services/OrderAppService';
+import { useCartStorage, useOrdersStorage } from '../secondaryAdapters/storageAdapter';
 
 interface OrderPrimaryAdapter {
   orderProducts: (user: User, cart: Cart) => Promise<Order | void>;
 }
 export function useOrderAdapter(): OrderPrimaryAdapter {
   // todo: DI
-  const payment = usePayment();
   const orderStorage = useOrdersStorage();
   const cartStorage = useCartStorage();
 
@@ -25,6 +24,6 @@ export function useOrderAdapter(): OrderPrimaryAdapter {
   // which would encapsulate all input data.
 
   return {
-    orderProducts: (user: User, cart: Cart) => oas.makeOrder(user, cart, { payment, orderStorage, cartStorage }),
+    orderProducts: (user: User, cart: Cart) => oas.makeOrder(user, cart, { orderStorage, cartStorage }),
   };
 }

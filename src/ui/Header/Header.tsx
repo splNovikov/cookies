@@ -6,7 +6,6 @@ import { useCartStorage, useUserStorage } from '../../secondaryAdapters/storageA
 export function Header(): ReactElement {
   const { user } = useUserStorage();
   const { cart } = useCartStorage();
-  console.log('cart', cart);
 
   return (
     <header className={styles.header}>

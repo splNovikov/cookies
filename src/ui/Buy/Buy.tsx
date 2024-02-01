@@ -19,9 +19,14 @@ export function Buy(): ReactElement | null {
 
   if (!user || !cart.products.length) return null;
   async function handleSubmit(e: React.FormEvent): Promise<void> {
-    setLoading(true);
     e.preventDefault();
-    await orderProducts(user!, cart);
+
+    if (!user) {
+      return;
+    }
+
+    setLoading(true);
+    await orderProducts(user, cart);
     setLoading(false);
   }
 

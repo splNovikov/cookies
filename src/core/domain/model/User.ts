@@ -1,5 +1,4 @@
 import { Ingredient } from './Ingredient';
-import { hasAllergy } from '../services/user';
 
 export type UserName = string;
 export class User {

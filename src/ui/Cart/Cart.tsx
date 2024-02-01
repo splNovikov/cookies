@@ -7,7 +7,6 @@ import { totalPrice } from '../../core/application/services/totalPrice';
 
 export function Cart(): ReactElement {
   const { cart } = useCartStorage();
-  console.log('cart', cart);
 
   return (
     <section>

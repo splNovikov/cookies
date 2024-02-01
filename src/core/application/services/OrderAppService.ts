@@ -13,7 +13,6 @@ import { CartStorageService, OrdersStorageService } from '../ports/storage';
 
 // todo: DI?
 type DIDependencies = {
-  payment: PaymentService;
   orderStorage: OrdersStorageService;
   cartStorage: CartStorageService;
 };
@@ -23,14 +22,13 @@ export class OrderAppService {
   @inject(DI_TYPES.NotificationService)
   private notifier!: NotificationService;
 
+  @inject(DI_TYPES.PaymentService)
+  private payment!: PaymentService;
+
   // todo constructor injections still not working!!!
   // constructor() {}
 
-  async makeOrder(
-    user: User,
-    cart: Cart,
-    { payment, orderStorage, cartStorage }: DIDependencies,
-  ): Promise<Order | void> {
+  async makeOrder(user: User, cart: Cart, { orderStorage, cartStorage }: DIDependencies): Promise<Order | void> {
     // Here we can validate the data before creating the order.
 
     // todo: I am not quite sure if this is the best way to do totalPrice here...
@@ -39,7 +37,7 @@ export class OrderAppService {
 
     // The use case function doesn't call third-party services directly,
     // instead, it relies on the interfaces we declared earlier.
-    const paid = await payment.tryPay(order.total);
+    const paid = await this.payment.tryPay(order.total);
     if (!paid) return this.notifier.notify("The payment wasn't successful 🤷");
 
     // And here we can save the order on the server, if necessary.
