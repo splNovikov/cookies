@@ -1,5 +1,5 @@
 import { PaymentService } from '../core/application/ports/payment';
-import { fakeApi } from './api';
+import { fakeApi } from './fakeApi';
 
 // todo: [novikov] those hooks are "adapters". Should it be hooks though
 export function usePayment(): PaymentService {

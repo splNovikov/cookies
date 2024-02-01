@@ -1,14 +1,14 @@
+import { injectable } from 'inversify';
 import { ApiClientService } from '../core/application/ports/apiClient';
 
 import { User, UserName } from '../core/domain/model/User';
 
-import { fakeApi } from './api';
+import { fakeApi } from './fakeApi';
 
-// todo: [novikov] those hooks are "adapters". Should it be hooks though
-export function useApiClient(): ApiClientService {
-  return {
-    auth(name: UserName, email: Email) {
-      return fakeApi(new User('sample-user-id', name, email, ['cocoa', 'cherry'], ['marshmallow', 'peanuts']));
-    },
-  };
+@injectable()
+export class ApiClient implements ApiClientService {
+  // eslint-disable-next-line class-methods-use-this
+  auth(name: UserName, email: Email): Promise<User> {
+    return fakeApi(new User('sample-user-id', name, email, ['cocoa', 'cherry'], ['marshmallow', 'peanuts']));
+  }
 }

@@ -20,7 +20,7 @@ export function useOrderAdapter(): OrderPrimaryAdapter {
 
   // We can also get `user` and `cart` right here through the corresponding hooks
   // and not pass them as arguments to a function.
-
+  // todo: command
   // Ideally, we would pass a command as an argument,
   // which would encapsulate all input data.
 
