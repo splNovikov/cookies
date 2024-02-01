@@ -10,8 +10,6 @@ interface AuthPrimaryAdapter {
   authenticate: (name: UserName, email: Email) => Promise<User>;
 }
 export function useAuthAdapter(): AuthPrimaryAdapter {
-  // Usually, we access services through Dependency Injection.
-  // Here we can use hooks as a crooked “DI-container”.
   // todo: DI
   const storage: UserStorageService = useUserStorage();
   const aas = diContainer.get(AuthAppService);

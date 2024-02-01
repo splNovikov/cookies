@@ -39,7 +39,10 @@ export class CartAppService {
     }
 
     const updated = addProduct(cart, product);
-    cartStorage.updateCart(updated);
+
+    // we should update a link to the object to trigger Store update...
+    // todo: can we fix it and do it more smoothly?
+    cartStorage.updateCart(new Cart(updated.products));
 
     return updated;
   }
