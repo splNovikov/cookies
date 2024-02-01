@@ -10,20 +10,24 @@ import { NotificationService } from '../ports/notification';
 type DIDependencies = {
   cartStorage: CartStorageService;
   userStorage: UserStorageService;
-  notifier: NotificationService;
+  // notifier: NotificationService;
 };
-export function addToCart(product: Product, { cartStorage, userStorage, notifier }: DIDependencies): Cart {
+export function addToCart(product: Product, { cartStorage, userStorage }: DIDependencies): Cart {
   const { cart } = cartStorage;
   const { user } = userStorage;
   if (!user) {
-    notifier.notify('No user!');
+    // todo:
+    alert('todo: return notifier');
+    // notifier.notify('No user!');
     return cart;
   }
 
   const isDangerous = product.toppings.some((ingredient) => hasAllergy(user, ingredient));
 
   if (isDangerous) {
-    notifier.notify('This cookie is dangerous to your health!');
+    // todo:
+    alert('todo: return notifier');
+    // notifier.notify('This cookie is dangerous to your health!');
     return cart;
   }
 

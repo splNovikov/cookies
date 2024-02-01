@@ -1,10 +1,10 @@
 import { CartStorageService, UserStorageService } from '../core/application/ports/storage';
-import { NotificationService } from '../core/application/ports/notification';
+// import { NotificationService } from '../core/application/ports/notification';
 import { addToCart } from '../core/application/services/addToCart';
 import { Product } from '../core/domain/model/Product';
 import { Cart } from '../core/domain/model/Cart';
 import { useCartStorage, useUserStorage } from '../secondaryAdapters/storageAdapter';
-import { useNotifier } from '../secondaryAdapters/notificationAdapter';
+// import { useNotifier } from '../secondaryAdapters/notificationAdapter';
 
 interface CartPrimaryAdapter {
   addToCart: (product: Product) => Cart;
@@ -15,7 +15,8 @@ export function useCartAdapter(): CartPrimaryAdapter {
   // todo: DI
   const cartStorage: CartStorageService = useCartStorage();
   const userStorage: UserStorageService = useUserStorage();
-  const notifier: NotificationService = useNotifier();
+  // todo:
+  // const notifier: NotificationService = useNotifier();
 
-  return { addToCart: (product: Product) => addToCart(product, { cartStorage, userStorage, notifier }) };
+  return { addToCart: (product: Product) => addToCart(product, { cartStorage, userStorage }) };
 }
