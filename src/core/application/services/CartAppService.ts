@@ -7,7 +7,7 @@ import { Product } from '../../domain/model/Product';
 import { Cart } from '../../domain/model/Cart';
 // todo: PORTS? should them be used in application-services?
 import { CartStorageService, UserStorageService } from '../ports/storage';
-import { NotificationService } from '../ports/notification';
+import { NotificationPort } from '../ports/NotificationPort';
 
 // todo: DI
 type DIDependencies = {
@@ -17,8 +17,8 @@ type DIDependencies = {
 
 @injectable()
 export class CartAppService {
-  @inject(DI_TYPES.NotificationService)
-  private notifier!: NotificationService;
+  @inject(DI_TYPES.NotificationPort)
+  private notifier!: NotificationPort;
 
   // todo constructor injections are still not working!!!
   // constructor() {}

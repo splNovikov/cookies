@@ -4,7 +4,7 @@ import { DI_TYPES } from 'di/DI_TYPES';
 import { User, UserName } from '../../domain/model/User';
 // todo: PORTS? should them be used in application-services?
 import { UserStorageService } from '../ports/storage';
-import { ApiClientService } from '../ports/apiClient';
+import { ApiClientPort } from '../ports/ApiClientPort';
 
 // todo: DI?
 type DIDependencies = {
@@ -13,8 +13,8 @@ type DIDependencies = {
 
 @injectable()
 export class AuthAppService {
-  @inject(DI_TYPES.ApiClientService)
-  private apiClient!: ApiClientService;
+  @inject(DI_TYPES.ApiClientPort)
+  private apiClient!: ApiClientPort;
 
   // todo constructor injections are still not working!!!
   // constructor() {}

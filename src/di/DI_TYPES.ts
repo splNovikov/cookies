@@ -1,7 +1,7 @@
 const DI_TYPES = {
-  NotificationService: Symbol.for('NotificationService'),
-  ApiClientService: Symbol.for('ApiClientService'),
-  PaymentService: Symbol.for('PaymentService'),
+  NotificationPort: Symbol.for('NotificationPort'),
+  ApiClientPort: Symbol.for('ApiClientPort'),
+  PaymentPort: Symbol.for('PaymentPort'),
 };
 
 export { DI_TYPES };

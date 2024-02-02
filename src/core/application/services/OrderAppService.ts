@@ -1,14 +1,14 @@
 import { inject, injectable } from 'inversify';
 
 import { DI_TYPES } from 'di/DI_TYPES';
-import { NotificationService } from '../ports/notification';
 import { createOrder } from '../../domain/services/order';
 import { User } from '../../domain/model/User';
 import { Cart } from '../../domain/model/Cart';
 import { Order } from '../../domain/model/Order';
 import { totalPrice } from './totalPrice';
 // todo: PORTS? should them be used in application-services?
-import { PaymentService } from '../ports/payment';
+import { NotificationPort } from '../ports/NotificationPort';
+import { PaymentPort } from '../ports/PaymentPort';
 import { CartStorageService, OrdersStorageService } from '../ports/storage';
 
 // todo: DI?
@@ -19,11 +19,11 @@ type DIDependencies = {
 
 @injectable()
 export class OrderAppService {
-  @inject(DI_TYPES.NotificationService)
-  private notifier!: NotificationService;
+  @inject(DI_TYPES.NotificationPort)
+  private notifier!: NotificationPort;
 
-  @inject(DI_TYPES.PaymentService)
-  private payment!: PaymentService;
+  @inject(DI_TYPES.PaymentPort)
+  private payment!: PaymentPort;
 
   // todo constructor injections still not working!!!
   // constructor() {}
