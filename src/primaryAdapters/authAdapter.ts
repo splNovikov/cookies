@@ -11,14 +11,13 @@ interface AuthPrimaryAdapter {
 }
 export function useAuthAdapter(): AuthPrimaryAdapter {
   // todo: DI
-  const storage: UserStorageService = useUserStorage();
+  const userStorage: UserStorageService = useUserStorage();
   const aas = diContainer.get(AuthAppService);
 
   return {
-    user: storage.user,
-    // Ideally, we would pass a command as an argument,
-    // which would encapsulate all input data.
+    user: userStorage.user,
+    // Ideally, we would pass a command as an argument, which would encapsulate all input data.
     // todo: command???
-    authenticate: async (name: UserName, email: Email) => aas.auth(name, email, { storage }),
+    authenticate: async (name: UserName, email: Email) => aas.auth(name, email, { storage: userStorage }),
   };
 }
