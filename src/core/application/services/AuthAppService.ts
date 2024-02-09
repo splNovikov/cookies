@@ -18,6 +18,7 @@ export class AuthAppService {
 
   async auth(name: UserName, email: Email): Promise<User> {
     const user = await this.apiClientOutputService.auth(name, email);
+
     this.userStorageOutputService.update(user);
 
     return user;

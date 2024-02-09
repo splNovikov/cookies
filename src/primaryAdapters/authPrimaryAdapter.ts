@@ -4,7 +4,6 @@ import { AuthAppService } from '../core/application/services/AuthAppService';
 import { User, UserName } from '../core/domain/model/User';
 
 interface AuthPrimaryAdapter {
-  user?: User;
   authenticate: (name: UserName, email: Email) => Promise<User>;
 }
 export function useAuthPrimaryAdapter(): AuthPrimaryAdapter {
