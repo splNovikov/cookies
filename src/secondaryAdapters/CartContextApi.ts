@@ -14,11 +14,6 @@ export class CartContextApi implements CartStorageOutputPort {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  subscribe(callback: () => void): void {
-    return storeObserver.subscribe(callback);
-  }
-
-  // eslint-disable-next-line class-methods-use-this
   updateCart(cart: Cart): Cart {
     // todo: new Cart??? so, why do we need addProduct in Cart class then???
     //  except the place where we use addProduct in CartAppService

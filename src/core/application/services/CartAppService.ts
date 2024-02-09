@@ -23,10 +23,6 @@ export class CartAppService {
   // todo constructor injections are still not working!!!
   // constructor() {}
 
-  subscribe(callback: () => void): void {
-    return this.cartStorageOutputService.subscribe(callback);
-  }
-
   getCart(): Cart {
     return this.cartStorageOutputService.getCart();
   }

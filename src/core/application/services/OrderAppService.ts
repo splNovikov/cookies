@@ -28,10 +28,6 @@ export class OrderAppService {
   // todo constructor injections still not working!!!
   // constructor() {}
 
-  subscribe(callback: () => void): void {
-    return this.orderStorageOutputService.subscribe(callback);
-  }
-
   getOrders(): Order[] {
     return this.orderStorageOutputService.getOrders();
   }

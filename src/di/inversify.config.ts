@@ -10,12 +10,14 @@ import { UserContextApi } from '../secondaryAdapters/UserContextApi';
 import { OrderContextApi } from '../secondaryAdapters/OrderContextApi';
 import { CartContextApi } from '../secondaryAdapters/CartContextApi';
 import { ProductContextApi } from '../secondaryAdapters/ProductContextApi';
+import { ContextApi } from '../secondaryAdapters/ContextApi';
 
 import { OrderAppService } from '../core/application/services/OrderAppService';
 import { AuthAppService } from '../core/application/services/AuthAppService';
 import { CartAppService } from '../core/application/services/CartAppService';
 import { UserAppService } from '../core/application/services/UserAppService';
 import { ProductAppService } from '../core/application/services/ProductAppService';
+import { StorageAppService } from '../core/application/services/StorageAppService';
 
 const diContainer = new Container();
 
@@ -23,6 +25,7 @@ const diContainer = new Container();
 diContainer.bind(DI_TYPES.NotificationOutputPort).to(AlertNotification);
 diContainer.bind(DI_TYPES.ApiClientOutputPort).to(ApiClient);
 diContainer.bind(DI_TYPES.PaymentOutputPort).to(Payment);
+diContainer.bind(DI_TYPES.StorageOutputPort).to(ContextApi);
 diContainer.bind(DI_TYPES.UserStorageOutputPort).to(UserContextApi);
 diContainer.bind(DI_TYPES.OrderStorageOutputPort).to(OrderContextApi);
 diContainer.bind(DI_TYPES.CartStorageOutputPort).to(CartContextApi);
@@ -30,6 +33,7 @@ diContainer.bind(DI_TYPES.ProductStorageOutputPort).to(ProductContextApi);
 
 // self - classes:
 // todo: should have own interface as InputPort. Should it? Why? Just to be? AppServices should not be "inversify able"
+diContainer.bind(StorageAppService).toSelf().inSingletonScope();
 diContainer.bind(OrderAppService).toSelf().inSingletonScope();
 diContainer.bind(AuthAppService).toSelf().inSingletonScope();
 diContainer.bind(CartAppService).toSelf().inSingletonScope();

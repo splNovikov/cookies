@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { diContainer } from 'di/inversify.config';
 
 import { OrderAppService } from '../core/application/services/OrderAppService';
+import { StorageAppService } from '../core/application/services/StorageAppService';
 import { User } from '../core/domain/model/User';
 import { Cart } from '../core/domain/model/Cart';
 import { Order } from '../core/domain/model/Order';
@@ -12,9 +13,11 @@ interface OrderPrimaryAdapter {
 }
 export function useOrderPrimaryAdapter(): OrderPrimaryAdapter {
   const orderAppService = diContainer.get(OrderAppService);
+  const storageAppService = diContainer.get(StorageAppService);
+
   const [orders, setOrders] = useState(orderAppService.getOrders());
 
-  orderAppService.subscribe(() => {
+  storageAppService.subscribe(() => {
     setOrders(orderAppService.getOrders());
   });
 
