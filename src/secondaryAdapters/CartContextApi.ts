@@ -8,22 +8,27 @@ import { storeObserver } from '../store/storeV2';
 export class CartContextApi implements CartStorageOutputPort {
   // eslint-disable-next-line class-methods-use-this
   getCart(): Cart {
-    const state = storeObserver.getState();
+    const { cart } = storeObserver.getState();
 
-    return state.cart;
+    return cart;
   }
 
   // eslint-disable-next-line class-methods-use-this
-  updateCart(cart: Cart): void {
-    // const state = storeObserver.getState();
-    // todo: update
-    // return cart;
+  subscribe(callback: () => void): void {
+    return storeObserver.subscribe(callback);
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  updateCart(cart: Cart): Cart {
+    // todo: new Cart??? so, why do we need addProduct in Cart class then???
+    //  except the place where we use addProduct in CartAppService
+    storeObserver.setState((state) => ({ ...state, cart: new Cart(cart.products) }));
+
+    return cart;
   }
 
   // eslint-disable-next-line class-methods-use-this
   emptyCart(): void {
-    // const state = storeObserver.getState();
-    // todo: update
-    // return cart;
+    storeObserver.setState((state) => ({ ...state, cart: new Cart([]) }));
   }
 }

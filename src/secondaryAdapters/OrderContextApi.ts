@@ -8,15 +8,13 @@ import { storeObserver } from '../store/storeV2';
 export class OrderContextApi implements OrderStorageOutputPort {
   // eslint-disable-next-line class-methods-use-this
   getOrders(): Order[] {
-    const state = storeObserver.getState();
+    const { orders } = storeObserver.getState();
 
-    return state.orders;
+    return orders;
   }
 
   // eslint-disable-next-line class-methods-use-this
   updateOrders(orders: Order[]): void {
-    // const state = storeObserver.getState();
-    // todo: update
-    // return order;
+    storeObserver.setState((state) => ({ ...state, orders }));
   }
 }

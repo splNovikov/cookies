@@ -18,6 +18,8 @@ export class UserAppService {
   }
 
   update(user: User): User {
-    return this.userStorageOutputService.update(user);
+    this.userStorageOutputService.update(user);
+
+    return user;
   }
 }

@@ -8,8 +8,8 @@ import { storeObserver } from '../store/storeV2';
 export class ProductContextApi implements ProductStorageOutputPort {
   // eslint-disable-next-line class-methods-use-this
   getProducts(): Product[] {
-    const state = storeObserver.getState();
+    const { cookies } = storeObserver.getState();
 
-    return state.cookies;
+    return cookies;
   }
 }

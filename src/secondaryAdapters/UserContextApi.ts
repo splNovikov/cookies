@@ -13,15 +13,13 @@ export class UserContextApi implements UserStorageOutputPort {
 
   // eslint-disable-next-line class-methods-use-this
   getUser(): User | undefined {
-    const state = storeObserver.getState();
+    const { user } = storeObserver.getState();
 
-    return state.user;
+    return user;
   }
 
   // eslint-disable-next-line class-methods-use-this
-  update(user: User): User {
+  update(user: User): void {
     storeObserver.setState((state) => ({ ...state, user }));
-
-    return user;
   }
 }

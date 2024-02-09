@@ -23,6 +23,10 @@ export class CartAppService {
   // todo constructor injections are still not working!!!
   // constructor() {}
 
+  subscribe(callback: () => void): void {
+    return this.cartStorageOutputService.subscribe(callback);
+  }
+
   getCart(): Cart {
     return this.cartStorageOutputService.getCart();
   }
@@ -44,11 +48,7 @@ export class CartAppService {
     }
 
     const updated = addProduct(cart, product);
-
-    // we should update a link to the object to trigger Store update...
-    // todo: can we fix it and do it more smoothly?
-    // todo!!!
-    this.cartStorageOutputService.updateCart(new Cart(updated.products));
+    this.cartStorageOutputService.updateCart(updated);
 
     return updated;
   }

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { diContainer } from 'di/inversify.config';
 
 import { CartAppService } from '../core/application/services/CartAppService';
@@ -10,9 +11,14 @@ interface CartPrimaryAdapter {
 }
 export function useCartPrimaryAdapter(): CartPrimaryAdapter {
   const cartAppService = diContainer.get(CartAppService);
+  const [cart, setCart] = useState(cartAppService.getCart());
+
+  cartAppService.subscribe(() => {
+    setCart(cartAppService.getCart());
+  });
 
   return {
-    cart: cartAppService.getCart(),
+    cart,
     addToCart: (product: Product) => cartAppService.add(product),
   };
 }
