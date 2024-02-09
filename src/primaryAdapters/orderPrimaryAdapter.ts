@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { diContainer } from 'di/inversify.config';
 
 import { OrderAppService } from '../core/application/services/OrderAppService';
@@ -11,6 +12,11 @@ interface OrderPrimaryAdapter {
 }
 export function useOrderPrimaryAdapter(): OrderPrimaryAdapter {
   const orderAppService = diContainer.get(OrderAppService);
+  const [orders, setOrders] = useState(orderAppService.getOrders());
+
+  orderAppService.subscribe(() => {
+    setOrders(orderAppService.getOrders());
+  });
 
   // todo:
   // We can also get `user` and `cart` right here through the corresponding hooks
@@ -20,7 +26,7 @@ export function useOrderPrimaryAdapter(): OrderPrimaryAdapter {
   // which would encapsulate all input data.
 
   return {
-    orders: orderAppService.getOrders(),
+    orders,
     orderProducts: (user: User, cart: Cart) => orderAppService.makeOrder(user, cart),
   };
 }
