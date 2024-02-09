@@ -1,16 +1,16 @@
 import React, { ReactElement, useState } from 'react';
 
-import { useOrderAdapter } from '../../primaryAdapters/orderAdapter';
-// todo: secondary???
-import { useCartStorage, useUserStorage } from '../../secondaryAdapters/storageAdapter';
+import { useUserPrimaryAdapter } from '../../primaryAdapters/userPrimaryAdapter';
+import { useOrderPrimaryAdapter } from '../../primaryAdapters/orderPrimaryAdapter';
+import { useCartPrimaryAdapter } from '../../primaryAdapters/cartPrimaryAdapter';
 import { UserName } from '../../core/domain/model/User';
 
 import styles from './Buy.module.css';
 
 export function Buy(): ReactElement | null {
-  const { orderProducts } = useOrderAdapter();
-  const { user } = useUserStorage();
-  const { cart } = useCartStorage();
+  const { orderProducts } = useOrderPrimaryAdapter();
+  const { user } = useUserPrimaryAdapter();
+  const { cart } = useCartPrimaryAdapter();
 
   const [name, setName] = useState<UserName>(user?.name ?? '');
   const [email, setEmail] = useState<Email>(user?.email ?? '');

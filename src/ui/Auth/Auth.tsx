@@ -1,7 +1,7 @@
 import React, { ReactElement, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { useAuthAdapter } from '../../primaryAdapters/authAdapter';
+import { useAuthPrimaryAdapter } from '../../primaryAdapters/authPrimaryAdapter';
 import { UserName } from '../../core/domain/model/User';
 
 import styles from './Auth.module.css';
@@ -11,8 +11,10 @@ export function Auth(): ReactElement {
   const [email, setEmail] = useState<Email>('');
   const [loading, setLoading] = useState(false);
 
-  const { user, authenticate } = useAuthAdapter();
-  if (user) return <Navigate to="/" />;
+  const { user, authenticate } = useAuthPrimaryAdapter();
+  if (user) {
+    return <Navigate to="/" />;
+  }
 
   async function handleSubmit(e: React.FormEvent): Promise<void> {
     setLoading(true);

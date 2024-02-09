@@ -1,9 +1,10 @@
 import { Fragment, ReactElement } from 'react';
-import { useUserStorage } from '../../secondaryAdapters/storageAdapter';
+import { useUserPrimaryAdapter } from '../../primaryAdapters/userPrimaryAdapter';
 import { ingredients } from '../../core/domain/model/Ingredient';
 
 export function Profile(): ReactElement | null {
-  const { user } = useUserStorage();
+  const { user } = useUserPrimaryAdapter();
+
   if (!user) return null;
 
   return (

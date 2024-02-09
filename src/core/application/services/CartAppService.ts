@@ -5,36 +5,41 @@ import { hasAllergy } from '../../domain/services/user';
 import { addProduct } from '../../domain/services/cart';
 import { Product } from '../../domain/model/Product';
 import { Cart } from '../../domain/model/Cart';
-// todo: PORTS? should them be used in application-services?
-import { CartStorageService, UserStorageService } from '../ports/storage';
-import { NotificationPort } from '../ports/NotificationPort';
-
-// todo: DI
-type DIDependencies = {
-  cartStorage: CartStorageService;
-  userStorage: UserStorageService;
-};
+import { NotificationOutputPort } from '../ports/NotificationOutputPort';
+import { UserStorageOutputPort } from '../ports/UserStorageOutputPort';
+import { CartStorageOutputPort } from '../ports/CartStorageOutputPort';
 
 @injectable()
 export class CartAppService {
-  @inject(DI_TYPES.NotificationPort)
-  private notifier!: NotificationPort;
+  @inject(DI_TYPES.NotificationOutputPort)
+  private notificationOutputService!: NotificationOutputPort;
+
+  @inject(DI_TYPES.UserStorageOutputPort)
+  private userStorageOutputService!: UserStorageOutputPort;
+
+  @inject(DI_TYPES.CartStorageOutputPort)
+  private cartStorageOutputService!: CartStorageOutputPort;
 
   // todo constructor injections are still not working!!!
   // constructor() {}
 
-  add(product: Product, { cartStorage, userStorage }: DIDependencies): Cart {
-    const { cart } = cartStorage;
-    const { user } = userStorage;
+  getCart(): Cart {
+    return this.cartStorageOutputService.getCart();
+  }
+
+  add(product: Product): Cart {
+    const cart = this.cartStorageOutputService.getCart();
+    const user = this.userStorageOutputService.getUser();
+
     if (!user) {
-      this.notifier.notify('No user!');
+      this.notificationOutputService.notify('No user!');
       return cart;
     }
 
     const isDangerous = product.toppings.some((ingredient) => hasAllergy(user, ingredient));
 
     if (isDangerous) {
-      this.notifier.notify('This cookie is dangerous to your health!');
+      this.notificationOutputService.notify('This cookie is dangerous to your health!');
       return cart;
     }
 
@@ -42,7 +47,8 @@ export class CartAppService {
 
     // we should update a link to the object to trigger Store update...
     // todo: can we fix it and do it more smoothly?
-    cartStorage.updateCart(new Cart(updated.products));
+    // todo!!!
+    this.cartStorageOutputService.updateCart(new Cart(updated.products));
 
     return updated;
   }

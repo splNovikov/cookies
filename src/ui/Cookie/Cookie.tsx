@@ -1,12 +1,12 @@
 import { ReactElement } from 'react';
 
-import { Toppings } from './Toppings';
+import { useUserPrimaryAdapter } from '../../primaryAdapters/userPrimaryAdapter';
+import { useCartPrimaryAdapter } from '../../primaryAdapters/cartPrimaryAdapter';
 import { Product } from '../../core/domain/model/Product';
 // todo: import from domain-service???
 import { contains } from '../../core/domain/services/cart';
-// todo: import from secondary-adapters???
-import { useCartStorage, useUserStorage } from '../../secondaryAdapters/storageAdapter';
-import { useCartAdapter } from '../../primaryAdapters/cartAdapter';
+
+import { Toppings } from './Toppings';
 
 import styles from './Cookie.module.css';
 
@@ -15,9 +15,8 @@ type CookieProps = {
 };
 
 export function Cookie({ cookie }: Readonly<CookieProps>): ReactElement {
-  const { user } = useUserStorage();
-  const { cart } = useCartStorage();
-  const { addToCart } = useCartAdapter();
+  const { user } = useUserPrimaryAdapter();
+  const { cart, addToCart } = useCartPrimaryAdapter();
 
   return (
     <article className={styles.cookie}>

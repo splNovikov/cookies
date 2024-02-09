@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { RouterProvider, createBrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { Provider } from './services/store';
+import { Provider, storeObserver } from './store/storeV2';
 
 import { Auth } from './ui/Auth';
 import { User } from './ui/User';
@@ -13,7 +13,7 @@ export const router = createBrowserRouter([
   {
     path: '*',
     element: (
-      <Provider>
+      <Provider store={storeObserver}>
         <div className="app">
           <Header />
           <Routes>

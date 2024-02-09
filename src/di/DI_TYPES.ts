@@ -1,7 +1,11 @@
 const DI_TYPES = {
-  NotificationPort: Symbol.for('NotificationPort'),
-  ApiClientPort: Symbol.for('ApiClientPort'),
-  PaymentPort: Symbol.for('PaymentPort'),
+  NotificationOutputPort: Symbol.for('NotificationOutputPort'),
+  ApiClientOutputPort: Symbol.for('ApiClientOutputPort'),
+  PaymentOutputPort: Symbol.for('PaymentOutputPort'),
+  UserStorageOutputPort: Symbol.for('UserStorageOutputPort'),
+  OrderStorageOutputPort: Symbol.for('OrderStorageOutputPort'),
+  CartStorageOutputPort: Symbol.for('CartStorageOutputPort'),
+  ProductStorageOutputPort: Symbol.for('ProductStorageOutputPort'),
 };
 
 export { DI_TYPES };

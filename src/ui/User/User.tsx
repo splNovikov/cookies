@@ -6,10 +6,11 @@ import { Buy } from '../Buy';
 import { Cart } from '../Cart';
 import { Orders } from '../Orders';
 import { Profile } from '../Profile';
-import { useUserStorage } from '../../secondaryAdapters/storageAdapter';
+import { useUserPrimaryAdapter } from '../../primaryAdapters/userPrimaryAdapter';
 
 export function User(): ReactElement {
-  const { user } = useUserStorage();
+  const { user } = useUserPrimaryAdapter();
+
   if (!user) return <Navigate to="/auth" />;
 
   return (

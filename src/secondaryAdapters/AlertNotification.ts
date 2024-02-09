@@ -1,8 +1,8 @@
 import { injectable } from 'inversify';
-import { NotificationPort } from '../core/application/ports/NotificationPort';
+import { NotificationOutputPort } from '../core/application/ports/NotificationOutputPort';
 
 @injectable()
-export class AlertNotification implements NotificationPort {
+export class AlertNotification implements NotificationOutputPort {
   // todo: [novikov] window is also external dependency
   // eslint-disable-next-line class-methods-use-this
   notify(message: string): void {

@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
 import { ReactElement } from 'react';
+
+import { useUserPrimaryAdapter } from '../../primaryAdapters/userPrimaryAdapter';
+import { useCartPrimaryAdapter } from '../../primaryAdapters/cartPrimaryAdapter';
+
 import styles from './Header.module.css';
-import { useCartStorage, useUserStorage } from '../../secondaryAdapters/storageAdapter';
 
 export function Header(): ReactElement {
-  const { user } = useUserStorage();
-  const { cart } = useCartStorage();
+  const { user } = useUserPrimaryAdapter();
+  const { cart } = useCartPrimaryAdapter();
 
   return (
     <header className={styles.header}>

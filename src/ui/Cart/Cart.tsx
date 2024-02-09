@@ -1,12 +1,15 @@
 import { ReactElement } from 'react';
-import { Cookie } from '../Cookie';
-import styles from './Cart.module.css';
+
+import { useCartPrimaryAdapter } from '../../primaryAdapters/cartPrimaryAdapter';
 import { Product } from '../../core/domain/model/Product';
-import { useCartStorage } from '../../secondaryAdapters/storageAdapter';
 import { totalPrice } from '../../core/application/services/totalPrice';
 
+import { Cookie } from '../Cookie';
+
+import styles from './Cart.module.css';
+
 export function Cart(): ReactElement {
-  const { cart } = useCartStorage();
+  const { cart } = useCartPrimaryAdapter();
 
   return (
     <section>

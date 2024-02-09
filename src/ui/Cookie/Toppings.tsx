@@ -1,7 +1,7 @@
 import React, { Fragment, ReactElement } from 'react';
 
+import { useUserPrimaryAdapter } from '../../primaryAdapters/userPrimaryAdapter';
 import { Product } from '../../core/domain/model/Product';
-import { useUserStorage } from '../../secondaryAdapters/storageAdapter';
 import { ingredients } from '../../core/domain/model/Ingredient';
 import { hasAllergy, hasPreference } from '../../core/domain/services/user';
 
@@ -10,7 +10,7 @@ type ToppingsProps = {
 };
 
 export function Toppings({ cookie }: Readonly<ToppingsProps>): ReactElement {
-  const { user } = useUserStorage();
+  const { user } = useUserPrimaryAdapter();
 
   return (
     <ul>
