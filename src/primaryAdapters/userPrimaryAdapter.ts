@@ -10,11 +10,11 @@ interface UserPrimaryAdapter {
 }
 export function useUserPrimaryAdapter(): UserPrimaryAdapter {
   const userAppService = diContainer.get(UserAppService);
-  const [user, setUser] = useState(userAppService.getUser());
+  // const [user, setUser] = useState(userAppService.getUser());
+  //
+  // userAppService.subscribe(() => {
+  //   setUser(userAppService.getUser());
+  // });
 
-  userAppService.subscribe(() => {
-    setUser(userAppService.getUser());
-  });
-
-  return { user };
+  return { user: userAppService.getUser() };
 }

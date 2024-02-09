@@ -2,6 +2,7 @@ import React, { ReactElement, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { useAuthPrimaryAdapter } from '../../primaryAdapters/authPrimaryAdapter';
+import { useUserPrimaryAdapter } from '../../primaryAdapters/userPrimaryAdapter';
 import { UserName } from '../../core/domain/model/User';
 
 import styles from './Auth.module.css';
@@ -11,7 +12,9 @@ export function Auth(): ReactElement {
   const [email, setEmail] = useState<Email>('');
   const [loading, setLoading] = useState(false);
 
-  const { user, authenticate } = useAuthPrimaryAdapter();
+  const { authenticate } = useAuthPrimaryAdapter();
+  const { user } = useUserPrimaryAdapter();
+
   if (user) {
     return <Navigate to="/" />;
   }
