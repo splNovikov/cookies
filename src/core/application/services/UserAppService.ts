@@ -4,8 +4,7 @@ import { DI_TYPES } from 'di/DI_TYPES';
 import { hasAllergy, hasPreference } from '../../domain/services/user';
 import { User } from '../../domain/model/User';
 import { Ingredient } from '../../domain/model/Ingredient';
-import { UserStorageOutputPort } from '../ports/UserStorageOutputPort';
-import { NotificationOutputPort } from '../ports/NotificationOutputPort';
+import { UserStorageOutputPort, NotificationOutputPort } from '../outputPorts';
 
 @injectable()
 export class UserAppService {

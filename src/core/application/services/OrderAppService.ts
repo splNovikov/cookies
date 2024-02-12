@@ -5,11 +5,13 @@ import { currentDatetime } from 'lib/datetime';
 import { createOrder } from '../../domain/services/order';
 import { getTotalPrice } from '../../domain/services/cart';
 import { Order } from '../../domain/model/Order';
-import { NotificationOutputPort } from '../ports/NotificationOutputPort';
-import { PaymentOutputPort } from '../ports/PaymentOutputPort';
-import { OrderStorageOutputPort } from '../ports/OrderStorageOutputPort';
-import { CartStorageOutputPort } from '../ports/CartStorageOutputPort';
-import { UserStorageOutputPort } from '../ports/UserStorageOutputPort';
+import {
+  NotificationOutputPort,
+  PaymentOutputPort,
+  OrderStorageOutputPort,
+  CartStorageOutputPort,
+  UserStorageOutputPort,
+} from '../outputPorts';
 
 @injectable()
 export class OrderAppService {

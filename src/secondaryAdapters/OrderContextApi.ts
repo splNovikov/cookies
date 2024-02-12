@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 
-import { OrderStorageOutputPort } from '../core/application/ports/OrderStorageOutputPort';
+import { OrderStorageOutputPort } from '../core/application/outputPorts';
 import { Order } from '../core/domain/model/Order';
 import { storeObserver } from '../store/storeV2';
 

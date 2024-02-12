@@ -6,9 +6,7 @@ import { hasAllergy } from '../../domain/services/user';
 import { addProduct, contains } from '../../domain/services/cart';
 import { Product } from '../../domain/model/Product';
 import { Cart } from '../../domain/model/Cart';
-import { NotificationOutputPort } from '../ports/NotificationOutputPort';
-import { UserStorageOutputPort } from '../ports/UserStorageOutputPort';
-import { CartStorageOutputPort } from '../ports/CartStorageOutputPort';
+import { NotificationOutputPort, UserStorageOutputPort, CartStorageOutputPort } from '../outputPorts';
 
 @injectable()
 export class CartAppService {

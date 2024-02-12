@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 
-import { CartStorageOutputPort } from '../core/application/ports/CartStorageOutputPort';
+import { CartStorageOutputPort } from '../core/application/outputPorts';
 import { Cart } from '../core/domain/model/Cart';
 import { storeObserver } from '../store/storeV2';
 

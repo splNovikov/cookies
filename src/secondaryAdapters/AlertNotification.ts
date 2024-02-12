@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { NotificationOutputPort } from '../core/application/ports/NotificationOutputPort';
+import { NotificationOutputPort } from '../core/application/outputPorts';
 
 @injectable()
 export class AlertNotification implements NotificationOutputPort {

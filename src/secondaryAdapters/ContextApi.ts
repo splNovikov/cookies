@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 
-import { StorageOutputPort } from '../core/application/ports/StorageOutputPort';
+import { StorageOutputPort } from '../core/application/outputPorts';
 import { storeObserver } from '../store/storeV2';
 
 @injectable()

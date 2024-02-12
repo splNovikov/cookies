@@ -2,7 +2,7 @@ import { inject, injectable } from 'inversify';
 
 import { DI_TYPES } from 'di/DI_TYPES';
 
-import { StorageOutputPort } from '../ports/StorageOutputPort';
+import { StorageOutputPort } from '../outputPorts';
 
 @injectable()
 export class StorageAppService {

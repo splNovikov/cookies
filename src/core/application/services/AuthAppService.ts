@@ -2,8 +2,7 @@ import { inject, injectable } from 'inversify';
 import { DI_TYPES } from 'di/DI_TYPES';
 
 import { User, UserName } from '../../domain/model/User';
-import { ApiClientOutputPort } from '../ports/ApiClientOutputPort';
-import { UserStorageOutputPort } from '../ports/UserStorageOutputPort';
+import { ApiClientOutputPort, UserStorageOutputPort } from '../outputPorts';
 
 @injectable()
 export class AuthAppService {

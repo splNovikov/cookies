@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 
-import { PaymentOutputPort } from '../core/application/ports/PaymentOutputPort';
+import { PaymentOutputPort } from '../core/application/outputPorts';
 import { fakeApi } from './fakeApi';
 
 @injectable()

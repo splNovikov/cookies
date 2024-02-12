@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { ApiClientOutputPort } from '../core/application/ports/ApiClientOutputPort';
+import { ApiClientOutputPort } from '../core/application/outputPorts';
 
 import { User, UserName } from '../core/domain/model/User';
 
