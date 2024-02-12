@@ -2,6 +2,7 @@ import { injectable } from 'inversify';
 
 import { UserStorageOutputPort } from '../core/application/ports/UserStorageOutputPort';
 import { User } from '../core/domain/model/User';
+import { Ingredient } from '../core/domain/model/Ingredient';
 import { storeObserver } from '../store/storeV2';
 
 @injectable()

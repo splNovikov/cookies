@@ -5,9 +5,11 @@ import { diContainer } from 'di/inversify.config';
 import { UserAppService } from '../core/application/services/UserAppService';
 import { StorageAppService } from '../core/application/services/StorageAppService';
 import { User } from '../core/domain/model/User';
+import { Ingredient } from '../core/domain/model/Ingredient';
 
 interface UserPrimaryAdapter {
   user: User | undefined;
+  hasAllergy: (ingredient: Ingredient) => boolean;
 }
 export function useUserPrimaryAdapter(): UserPrimaryAdapter {
   const userAppService = diContainer.get(UserAppService);
@@ -19,5 +21,8 @@ export function useUserPrimaryAdapter(): UserPrimaryAdapter {
     setUser(userAppService.getUser());
   });
 
-  return { user };
+  return {
+    user,
+    hasAllergy: (topping: Ingredient) => userAppService.hasAllergy(topping),
+  };
 }

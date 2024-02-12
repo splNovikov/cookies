@@ -36,7 +36,7 @@ export class CartAppService {
       return cart;
     }
 
-    const isDangerous = product.toppings.some((ingredient) => hasAllergy(user, ingredient));
+    const isDangerous = hasAllergy(user, product.toppings);
 
     if (isDangerous) {
       this.notificationOutputService.notify('This cookie is dangerous to your health!');
