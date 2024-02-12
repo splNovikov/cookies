@@ -1,13 +1,14 @@
 import { diContainer } from 'di/inversify.config';
+import { DI_TYPES } from 'di/DI_TYPES';
 
-import { ProductAppService } from '../core/application/services/ProductAppService';
+import { ProductInputPort } from '../core/application/inputPorts';
 import { Product } from '../core/domain/model';
 
 interface ProductPrimaryAdapter {
   products: Product[];
 }
 export function useProductPrimaryAdapter(): ProductPrimaryAdapter {
-  const productAppService = diContainer.get(ProductAppService);
+  const productAppService = <ProductInputPort>diContainer.get(DI_TYPES.ProductInputPort);
 
   return { products: productAppService.getProducts() };
 }
