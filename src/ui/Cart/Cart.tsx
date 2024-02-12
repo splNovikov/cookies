@@ -2,7 +2,6 @@ import { ReactElement } from 'react';
 
 import { useCartPrimaryAdapter } from '../../primaryAdapters/cartPrimaryAdapter';
 import { Product } from '../../core/domain/model/Product';
-import { totalPrice } from '../../core/application/services/totalPrice';
 
 import { Cookie } from '../Cookie';
 
@@ -23,7 +22,7 @@ export function Cart(): ReactElement {
         ))}
       </ul>
 
-      <p>Total: {totalPrice(cart.products) / 100} ₽</p>
+      <p>Total: {cart.getTotalPrice() / 100} ₽</p>
     </section>
   );
 }

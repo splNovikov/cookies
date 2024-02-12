@@ -4,13 +4,12 @@ import { DI_TYPES } from 'di/DI_TYPES';
 import { currentDatetime } from 'lib/datetime';
 import { createOrder } from '../../domain/services/order';
 import { getTotalPrice } from '../../domain/services/cart';
-import { User } from '../../domain/model/User';
-import { Cart } from '../../domain/model/Cart';
 import { Order } from '../../domain/model/Order';
 import { NotificationOutputPort } from '../ports/NotificationOutputPort';
 import { PaymentOutputPort } from '../ports/PaymentOutputPort';
 import { OrderStorageOutputPort } from '../ports/OrderStorageOutputPort';
 import { CartStorageOutputPort } from '../ports/CartStorageOutputPort';
+import { UserStorageOutputPort } from '../ports/UserStorageOutputPort';
 
 @injectable()
 export class OrderAppService {
@@ -19,6 +18,9 @@ export class OrderAppService {
 
   @inject(DI_TYPES.PaymentOutputPort)
   private paymentOutputService!: PaymentOutputPort;
+
+  @inject(DI_TYPES.UserStorageOutputPort)
+  private userStorageOutputService!: UserStorageOutputPort;
 
   @inject(DI_TYPES.OrderStorageOutputPort)
   private orderStorageOutputService!: OrderStorageOutputPort;
@@ -33,8 +35,13 @@ export class OrderAppService {
     return this.orderStorageOutputService.getOrders();
   }
 
-  async makeOrder(user: User, cart: Cart): Promise<Order | void> {
-    // Here we can validate the data before creating the order.
+  async makeOrder(): Promise<Order | void> {
+    const user = this.userStorageOutputService.getUser();
+    const cart = this.cartStorageOutputService.getCart();
+
+    if (!user) {
+      return this.notificationOutputService.notify('No user');
+    }
 
     const total = getTotalPrice(cart);
     const created = currentDatetime();
@@ -45,9 +52,7 @@ export class OrderAppService {
       return this.notificationOutputService.notify("The payment wasn't successful 🤷");
     }
 
-    // todo: can we use domain services here?
-    const orders = this.orderStorageOutputService.getOrders();
-    this.orderStorageOutputService.updateOrders([...orders, order]);
+    this.orderStorageOutputService.addOrder(order);
     this.cartStorageOutputService.emptyCart();
 
     return order;

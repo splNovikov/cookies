@@ -21,15 +21,12 @@ export function useOrderPrimaryAdapter(): OrderPrimaryAdapter {
     setOrders(orderAppService.getOrders());
   });
 
-  // todo:
-  // We can also get `user` and `cart` right here through the corresponding hooks
-  // and not pass them as arguments to a function.
   // todo: command
   // Ideally, we would pass a command as an argument,
   // which would encapsulate all input data.
 
   return {
     orders,
-    orderProducts: (user: User, cart: Cart) => orderAppService.makeOrder(user, cart),
+    orderProducts: () => orderAppService.makeOrder(),
   };
 }

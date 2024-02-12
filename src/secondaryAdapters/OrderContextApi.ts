@@ -14,7 +14,7 @@ export class OrderContextApi implements OrderStorageOutputPort {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  updateOrders(orders: Order[]): void {
-    storeObserver.setState((state) => ({ ...state, orders }));
+  addOrder(order: Order): void {
+    storeObserver.setState((state) => ({ ...state, orders: [...state.orders, order] }));
   }
 }
