@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 
-import { Product } from '../../core/domain/model/Product';
 import { useProductPrimaryAdapter } from '../../primaryAdapters/productPrimaryAdapter';
+import { Product } from '../../core/domain/model/Product';
 
 import { Cookie } from '../Cookie';
 
