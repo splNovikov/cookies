@@ -3,11 +3,11 @@ import 'reflect-metadata';
 import { DI_TYPES } from 'di/DI_TYPES';
 
 import { AuthAppService } from '../core/application/services/AuthAppService';
-import { OrderAppService } from '../core/application/services/OrderAppService';
 import { CartAppService } from '../core/application/services/CartAppService';
-import { UserAppService } from '../core/application/services/UserAppService';
+import { OrderAppService } from '../core/application/services/OrderAppService';
 import { ProductAppService } from '../core/application/services/ProductAppService';
 import { StorageAppService } from '../core/application/services/StorageAppService';
+import { UserAppService } from '../core/application/services/UserAppService';
 
 import { AlertNotification } from '../secondaryAdapters/AlertNotification';
 import { ApiClient } from '../secondaryAdapters/ApiClient';
@@ -23,8 +23,8 @@ const diContainer = new Container();
 // interfaces implementation bindings:
 diContainer.bind(DI_TYPES.AuthInputPort).to(AuthAppService);
 diContainer.bind(DI_TYPES.CartInputPort).to(CartAppService);
+diContainer.bind(DI_TYPES.OrderInputPort).to(OrderAppService);
 diContainer.bind(StorageAppService).toSelf().inSingletonScope();
-diContainer.bind(OrderAppService).toSelf().inSingletonScope();
 diContainer.bind(UserAppService).toSelf().inSingletonScope();
 diContainer.bind(ProductAppService).toSelf().inSingletonScope();
 

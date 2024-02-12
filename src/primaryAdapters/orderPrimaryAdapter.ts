@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { diContainer } from 'di/inversify.config';
+import { DI_TYPES } from 'di/DI_TYPES';
 
-import { OrderAppService } from '../core/application/services/OrderAppService';
+import { OrderInputPort } from '../core/application/inputPorts';
 import { StorageAppService } from '../core/application/services/StorageAppService';
 import { Cart, Order, User } from '../core/domain/model';
 
@@ -10,7 +11,7 @@ interface OrderPrimaryAdapter {
   orderProducts: (user: User, cart: Cart) => Promise<Order | void>;
 }
 export function useOrderPrimaryAdapter(): OrderPrimaryAdapter {
-  const orderAppService = diContainer.get(OrderAppService);
+  const orderAppService = <OrderInputPort>diContainer.get(DI_TYPES.OrderInputPort);
   const storageAppService = diContainer.get(StorageAppService);
 
   const [orders, setOrders] = useState(orderAppService.getOrders());
