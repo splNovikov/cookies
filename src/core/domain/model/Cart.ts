@@ -16,4 +16,8 @@ export class Cart {
   containsProduct(product: Product): boolean {
     return this.products.some(({ id }) => id === product.id);
   }
+
+  getTotalPrice(): PriceCents {
+    return this.products.reduce((total, product) => total + product.price, 0);
+  }
 }
