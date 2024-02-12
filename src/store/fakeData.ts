@@ -1,6 +1,6 @@
-import { Product } from '../core/domain/model/Product';
+import { ProductDTO } from './ProductDTO';
 
-export const cookies: Product[] = [
+export const cookies: ProductDTO[] = [
   {
     id: '1',
     title: 'Cococococoa',

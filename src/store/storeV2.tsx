@@ -5,7 +5,9 @@ import { Cart } from '../core/domain/model/Cart';
 import { User } from '../core/domain/model/User';
 import { Order } from '../core/domain/model/Order';
 
-type Listener<T> = { (data: T): void };
+import { ProductDTO } from './ProductDTO';
+
+type Listener<T> = (data: T) => void;
 type StoreObserver<T> = {
   getState(): T;
   setState(fn: (state: T) => T): void;
@@ -21,22 +23,24 @@ type InitialState = {
 const initialState: InitialState = {
   user: undefined,
   cart: new Cart([]),
-  cookies: cookies.map(({ id, price, toppings, title }) => new Product(id, title, price, toppings)),
+  cookies: cookies.map(({ id, price, toppings, title }: ProductDTO) => new Product(id, title, price, toppings)),
   orders: [],
 };
 export const storeObserver = (function <T>(initState: T): StoreObserver<T> {
   let value = initState;
-  const listeners: Listener<T>[] = [];
+  let listeners: Listener<T>[] = [];
   const getState = (): T => value;
   const setState = (fn: (state: T) => T): void => {
     value = fn(value);
     listeners.forEach((l) => l(value));
   };
-  const subscribe = (listener: Listener<T>): void => {
+  const subscribe = (listener: Listener<T>): (() => void) => {
     listeners.push(listener);
 
-    // unsubscribe
-    listeners.filter((f) => f !== listener);
+    // unsubscribe callback on return
+    return () => {
+      listeners = listeners.filter((f) => f !== listener);
+    };
   };
   return { getState, setState, subscribe };
 })(initialState);
@@ -48,7 +52,7 @@ type ProviderProps<T> = {
   store: StoreObserver<T>;
   children: ReactElement;
 };
-export function Provider<T>({ store, children }: ProviderProps<T>): ReactElement {
+export function Provider<T>({ store, children }: Readonly<ProviderProps<T>>): ReactElement {
   const [state, setState] = React.useState(store.getState());
 
   // todo: remove it?
