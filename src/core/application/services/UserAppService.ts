@@ -1,10 +1,10 @@
 import { inject, injectable } from 'inversify';
 import { DI_TYPES } from 'di/DI_TYPES';
 
+import { hasAllergy, hasPreference } from '../../domain/services/user';
 import { User } from '../../domain/model/User';
 import { Ingredient } from '../../domain/model/Ingredient';
 import { UserStorageOutputPort } from '../ports/UserStorageOutputPort';
-import { hasAllergy } from '../../domain/services/user';
 
 @injectable()
 export class UserAppService {
@@ -25,5 +25,11 @@ export class UserAppService {
     const user = this.getUser();
 
     return user ? hasAllergy(user, topping) : false;
+  }
+
+  hasPreference(topping: Ingredient): boolean {
+    const user = this.getUser();
+
+    return user ? hasPreference(user, topping) : false;
   }
 }

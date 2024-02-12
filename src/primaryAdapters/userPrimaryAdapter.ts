@@ -10,6 +10,7 @@ import { Ingredient } from '../core/domain/model/Ingredient';
 interface UserPrimaryAdapter {
   user: User | undefined;
   hasAllergy: (ingredient: Ingredient) => boolean;
+  hasPreference: (ingredient: Ingredient) => boolean;
 }
 export function useUserPrimaryAdapter(): UserPrimaryAdapter {
   const userAppService = diContainer.get(UserAppService);
@@ -24,5 +25,6 @@ export function useUserPrimaryAdapter(): UserPrimaryAdapter {
   return {
     user,
     hasAllergy: (topping: Ingredient) => userAppService.hasAllergy(topping),
+    hasPreference: (topping: Ingredient) => userAppService.hasPreference(topping),
   };
 }

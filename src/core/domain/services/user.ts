@@ -9,6 +9,10 @@ export function hasAllergy(user: User, ingredients: Ingredient | Ingredient[]): 
   return user.hasAllergy(ingredients);
 }
 
-export function hasPreference(user: User, ingredient: Ingredient): boolean {
-  return user.hasPreference(ingredient);
+export function hasPreference(user: User, ingredients: Ingredient | Ingredient[]): boolean {
+  if (ingredients instanceof Array) {
+    return ingredients.some((ingredient) => user.hasPreference(ingredient));
+  }
+
+  return user.hasPreference(ingredients);
 }
