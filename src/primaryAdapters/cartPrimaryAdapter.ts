@@ -7,8 +7,9 @@ import { Product } from '../core/domain/model/Product';
 import { Cart } from '../core/domain/model/Cart';
 
 interface CartPrimaryAdapter {
-  addToCart: (product: Product) => Cart;
   cart: Cart;
+  addToCart: (product: Product) => Cart;
+  containsProduct: (product: Product) => boolean;
 }
 export function useCartPrimaryAdapter(): CartPrimaryAdapter {
   const cartAppService = diContainer.get(CartAppService);
@@ -23,5 +24,6 @@ export function useCartPrimaryAdapter(): CartPrimaryAdapter {
   return {
     cart,
     addToCart: (product: Product) => cartAppService.add(product),
+    containsProduct: (product: Product) => cartAppService.containsProduct(product),
   };
 }

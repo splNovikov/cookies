@@ -3,8 +3,6 @@ import { ReactElement } from 'react';
 import { useUserPrimaryAdapter } from '../../primaryAdapters/userPrimaryAdapter';
 import { useCartPrimaryAdapter } from '../../primaryAdapters/cartPrimaryAdapter';
 import { Product } from '../../core/domain/model/Product';
-// todo: import from domain-service???
-import { contains } from '../../core/domain/services/cart';
 
 import { Toppings } from './Toppings';
 
@@ -16,7 +14,7 @@ type CookieProps = {
 
 export function Cookie({ cookie }: Readonly<CookieProps>): ReactElement {
   const { user } = useUserPrimaryAdapter();
-  const { cart, addToCart } = useCartPrimaryAdapter();
+  const { addToCart, containsProduct } = useCartPrimaryAdapter();
 
   return (
     <article className={styles.cookie}>
@@ -30,7 +28,7 @@ export function Cookie({ cookie }: Readonly<CookieProps>): ReactElement {
         </button>
       )}
 
-      {contains(cart, cookie) && <span className={styles.contains}>In your cart</span>}
+      {containsProduct(cookie) && <span className={styles.contains}>In your cart</span>}
     </article>
   );
 }

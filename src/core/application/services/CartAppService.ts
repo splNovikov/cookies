@@ -1,8 +1,9 @@
 import { inject, injectable } from 'inversify';
 
 import { DI_TYPES } from 'di/DI_TYPES';
+
 import { hasAllergy } from '../../domain/services/user';
-import { addProduct } from '../../domain/services/cart';
+import { addProduct, contains } from '../../domain/services/cart';
 import { Product } from '../../domain/model/Product';
 import { Cart } from '../../domain/model/Cart';
 import { NotificationOutputPort } from '../ports/NotificationOutputPort';
@@ -47,5 +48,11 @@ export class CartAppService {
     this.cartStorageOutputService.updateCart(updated);
 
     return updated;
+  }
+
+  containsProduct(product: Product): boolean {
+    const cart = this.cartStorageOutputService.getCart();
+
+    return contains(cart, product);
   }
 }

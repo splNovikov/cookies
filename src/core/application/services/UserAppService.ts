@@ -5,9 +5,13 @@ import { hasAllergy, hasPreference } from '../../domain/services/user';
 import { User } from '../../domain/model/User';
 import { Ingredient } from '../../domain/model/Ingredient';
 import { UserStorageOutputPort } from '../ports/UserStorageOutputPort';
+import { NotificationOutputPort } from '../ports/NotificationOutputPort';
 
 @injectable()
 export class UserAppService {
+  @inject(DI_TYPES.NotificationOutputPort)
+  private notificationOutputService!: NotificationOutputPort;
+
   @inject(DI_TYPES.UserStorageOutputPort)
   private userStorageOutputService!: UserStorageOutputPort;
 
@@ -24,12 +28,24 @@ export class UserAppService {
   hasAllergy(topping: Ingredient): boolean {
     const user = this.getUser();
 
-    return user ? hasAllergy(user, topping) : false;
+    if (!user) {
+      this.notificationOutputService.notify('No user!');
+
+      return false;
+    }
+
+    return hasAllergy(user, topping);
   }
 
   hasPreference(topping: Ingredient): boolean {
     const user = this.getUser();
 
-    return user ? hasPreference(user, topping) : false;
+    if (!user) {
+      this.notificationOutputService.notify('No user!');
+
+      return false;
+    }
+
+    return hasPreference(user, topping);
   }
 }
