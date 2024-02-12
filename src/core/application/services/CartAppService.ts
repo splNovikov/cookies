@@ -1,14 +1,14 @@
 import { inject, injectable } from 'inversify';
-
 import { DI_TYPES } from 'di/DI_TYPES';
 
+import { CartInputPort } from '../inputPorts';
 import { hasAllergy } from '../../domain/services/user';
 import { addProduct, contains } from '../../domain/services/cart';
 import { Cart, Product } from '../../domain/model';
 import { NotificationOutputPort, UserStorageOutputPort, CartStorageOutputPort } from '../outputPorts';
 
 @injectable()
-export class CartAppService {
+export class CartAppService implements CartInputPort {
   @inject(DI_TYPES.NotificationOutputPort)
   private notificationOutputService!: NotificationOutputPort;
 
@@ -25,7 +25,7 @@ export class CartAppService {
     return this.cartStorageOutputService.getCart();
   }
 
-  add(product: Product): Cart {
+  addProduct(product: Product): Cart {
     const cart = this.cartStorageOutputService.getCart();
     const user = this.userStorageOutputService.getUser();
 

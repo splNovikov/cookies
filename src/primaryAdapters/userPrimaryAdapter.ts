@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import { diContainer } from 'di/inversify.config';
 
 import { UserAppService } from '../core/application/services/UserAppService';

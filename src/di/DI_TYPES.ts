@@ -1,4 +1,7 @@
 const DI_TYPES = {
+  AuthInputPort: Symbol.for('AuthInputPort'),
+  CartInputPort: Symbol.for('CartInputPort'),
+
   NotificationOutputPort: Symbol.for('NotificationOutputPort'),
   ApiClientOutputPort: Symbol.for('ApiClientOutputPort'),
   PaymentOutputPort: Symbol.for('PaymentOutputPort'),

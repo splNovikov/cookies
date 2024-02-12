@@ -1,11 +1,12 @@
 import { inject, injectable } from 'inversify';
 import { DI_TYPES } from 'di/DI_TYPES';
 
+import { AuthInputPort } from '../inputPorts';
 import { User, UserName } from '../../domain/model';
 import { ApiClientOutputPort, UserStorageOutputPort } from '../outputPorts';
 
 @injectable()
-export class AuthAppService {
+export class AuthAppService implements AuthInputPort {
   @inject(DI_TYPES.ApiClientOutputPort)
   private apiClientOutputService!: ApiClientOutputPort;
 

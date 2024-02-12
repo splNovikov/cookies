@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import { diContainer } from 'di/inversify.config';
+import { DI_TYPES } from 'di/DI_TYPES';
 
-import { CartAppService } from '../core/application/services/CartAppService';
+import { CartInputPort } from '../core/application/inputPorts';
 import { StorageAppService } from '../core/application/services/StorageAppService';
 import { Cart, Product } from '../core/domain/model';
 
 interface CartPrimaryAdapter {
   cart: Cart;
-  addToCart: (product: Product) => Cart;
+  addProduct: (product: Product) => Cart;
   containsProduct: (product: Product) => boolean;
 }
 export function useCartPrimaryAdapter(): CartPrimaryAdapter {
-  const cartAppService = diContainer.get(CartAppService);
+  const cartAppService = <CartInputPort>diContainer.get(DI_TYPES.CartInputPort);
   const storageAppService = diContainer.get(StorageAppService);
 
   const [cart, setCart] = useState(cartAppService.getCart());
@@ -22,7 +23,7 @@ export function useCartPrimaryAdapter(): CartPrimaryAdapter {
 
   return {
     cart,
-    addToCart: (product: Product) => cartAppService.add(product),
+    addProduct: (product: Product) => cartAppService.addProduct(product),
     containsProduct: (product: Product) => cartAppService.containsProduct(product),
   };
 }

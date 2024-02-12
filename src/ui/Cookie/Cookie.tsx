@@ -14,7 +14,7 @@ type CookieProps = {
 
 export function Cookie({ cookie }: Readonly<CookieProps>): ReactElement {
   const { user } = useUserPrimaryAdapter();
-  const { addToCart, containsProduct } = useCartPrimaryAdapter();
+  const { addProduct, containsProduct } = useCartPrimaryAdapter();
 
   return (
     <article className={styles.cookie}>
@@ -23,7 +23,7 @@ export function Cookie({ cookie }: Readonly<CookieProps>): ReactElement {
       <Toppings cookie={cookie} />
 
       {!!user && (
-        <button type="button" onClick={() => addToCart(cookie)}>
+        <button type="button" onClick={() => addProduct(cookie)}>
           {cookie.price / 100} ₽
         </button>
       )}
