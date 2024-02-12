@@ -1,4 +1,4 @@
-import { User } from '../../domain/model/User';
+import { User } from '../../domain/model';
 
 export interface UserStorageOutputPort {
   getUser(): User | undefined;

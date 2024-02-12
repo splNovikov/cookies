@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 
 import { useAuthPrimaryAdapter } from '../../primaryAdapters/authPrimaryAdapter';
 import { useUserPrimaryAdapter } from '../../primaryAdapters/userPrimaryAdapter';
-import { UserName } from '../../core/domain/model/User';
+import { UserName } from '../../core/domain/model';
 
 import styles from './Auth.module.css';
 

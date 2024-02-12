@@ -1,5 +1,4 @@
-import { Cart } from '../model/Cart';
-import { Product } from '../model/Product';
+import { Cart, Product } from '../model';
 
 export function addProduct(cart: Cart, product: Product): Cart {
   return cart.addProduct(product);

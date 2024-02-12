@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify';
 
 import { DI_TYPES } from 'di/DI_TYPES';
-import { Product } from '../../domain/model/Product';
+import { Product } from '../../domain/model';
 import { ProductStorageOutputPort } from '../outputPorts';
 
 @injectable()

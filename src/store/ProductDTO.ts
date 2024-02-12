@@ -1,5 +1,5 @@
 // todo: move this file to the corresponding place
-import { Ingredient } from '../core/domain/model/Ingredient';
+import { Ingredient } from '../core/domain/model';
 
 export type ProductDTO = {
   id: string;

@@ -2,8 +2,7 @@ import { inject, injectable } from 'inversify';
 import { DI_TYPES } from 'di/DI_TYPES';
 
 import { hasAllergy, hasPreference } from '../../domain/services/user';
-import { User } from '../../domain/model/User';
-import { Ingredient } from '../../domain/model/Ingredient';
+import { User, Ingredient } from '../../domain/model';
 import { UserStorageOutputPort, NotificationOutputPort } from '../outputPorts';
 
 @injectable()

@@ -1,8 +1,8 @@
 import { injectable } from 'inversify';
 
+import { storeObserver } from 'store';
+import { Order } from '../core/domain/model';
 import { OrderStorageOutputPort } from '../core/application/outputPorts';
-import { Order } from '../core/domain/model/Order';
-import { storeObserver } from '../store/storeV2';
 
 @injectable()
 export class OrderContextApi implements OrderStorageOutputPort {

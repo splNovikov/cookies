@@ -1,7 +1,7 @@
 import { injectable } from 'inversify';
 
+import { storeObserver } from 'store';
 import { StorageOutputPort } from '../core/application/outputPorts';
-import { storeObserver } from '../store/storeV2';
 
 @injectable()
 export class ContextApi implements StorageOutputPort {

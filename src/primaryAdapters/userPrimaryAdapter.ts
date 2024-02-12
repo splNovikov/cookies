@@ -4,8 +4,7 @@ import { diContainer } from 'di/inversify.config';
 
 import { UserAppService } from '../core/application/services/UserAppService';
 import { StorageAppService } from '../core/application/services/StorageAppService';
-import { User } from '../core/domain/model/User';
-import { Ingredient } from '../core/domain/model/Ingredient';
+import { User, Ingredient } from '../core/domain/model';
 
 interface UserPrimaryAdapter {
   user: User | undefined;

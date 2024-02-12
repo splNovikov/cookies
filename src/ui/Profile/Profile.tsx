@@ -1,7 +1,7 @@
 import { Fragment, ReactElement } from 'react';
 
 import { useUserPrimaryAdapter } from '../../primaryAdapters/userPrimaryAdapter';
-import { ingredients } from '../../core/domain/model/Ingredient';
+import { ingredients } from '../../core/domain/model';
 
 export function Profile(): ReactElement | null {
   const { user } = useUserPrimaryAdapter();

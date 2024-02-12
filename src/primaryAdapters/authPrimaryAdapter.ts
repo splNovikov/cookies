@@ -1,7 +1,7 @@
 import { diContainer } from 'di/inversify.config';
 
 import { AuthAppService } from '../core/application/services/AuthAppService';
-import { User, UserName } from '../core/domain/model/User';
+import { User, UserName } from '../core/domain/model';
 
 interface AuthPrimaryAdapter {
   authenticate: (name: UserName, email: Email) => Promise<User>;

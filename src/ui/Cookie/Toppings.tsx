@@ -1,8 +1,7 @@
 import React, { Fragment, ReactElement } from 'react';
 
 import { useUserPrimaryAdapter } from '../../primaryAdapters/userPrimaryAdapter';
-import { Product } from '../../core/domain/model/Product';
-import { ingredients } from '../../core/domain/model/Ingredient';
+import { Product, ingredients } from '../../core/domain/model';
 
 type ToppingsProps = {
   cookie: Product;

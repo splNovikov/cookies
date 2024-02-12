@@ -1,8 +1,8 @@
 import { injectable } from 'inversify';
 
+import { storeObserver } from 'store';
+import { Cart } from '../core/domain/model';
 import { CartStorageOutputPort } from '../core/application/outputPorts';
-import { Cart } from '../core/domain/model/Cart';
-import { storeObserver } from '../store/storeV2';
 
 @injectable()
 export class CartContextApi implements CartStorageOutputPort {

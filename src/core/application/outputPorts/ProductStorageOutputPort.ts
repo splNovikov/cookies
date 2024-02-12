@@ -1,4 +1,4 @@
-import { Product } from '../../domain/model/Product';
+import { Product } from '../../domain/model';
 
 export interface ProductStorageOutputPort {
   getProducts(): Product[];

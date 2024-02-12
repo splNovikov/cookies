@@ -1,4 +1,4 @@
-import { Order } from '../../domain/model/Order';
+import { Order } from '../../domain/model';
 
 export interface OrderStorageOutputPort {
   getOrders(): Order[];

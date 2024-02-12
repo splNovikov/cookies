@@ -1,5 +1,4 @@
-import { Ingredient } from '../model/Ingredient';
-import { User } from '../model/User';
+import { Ingredient, User } from '../model';
 
 export function hasAllergy(user: User, ingredients: Ingredient | Ingredient[]): boolean {
   if (ingredients instanceof Array) {

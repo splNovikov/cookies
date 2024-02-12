@@ -3,8 +3,7 @@ import { diContainer } from 'di/inversify.config';
 
 import { CartAppService } from '../core/application/services/CartAppService';
 import { StorageAppService } from '../core/application/services/StorageAppService';
-import { Product } from '../core/domain/model/Product';
-import { Cart } from '../core/domain/model/Cart';
+import { Cart, Product } from '../core/domain/model';
 
 interface CartPrimaryAdapter {
   cart: Cart;

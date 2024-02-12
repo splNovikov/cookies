@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 
 import { useUserPrimaryAdapter } from '../../primaryAdapters/userPrimaryAdapter';
 import { useCartPrimaryAdapter } from '../../primaryAdapters/cartPrimaryAdapter';
-import { Product } from '../../core/domain/model/Product';
+import { Product } from '../../core/domain/model';
 
 import { Toppings } from './Toppings';
 

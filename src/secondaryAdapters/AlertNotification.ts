@@ -1,4 +1,5 @@
 import { injectable } from 'inversify';
+
 import { NotificationOutputPort } from '../core/application/outputPorts';
 
 @injectable()

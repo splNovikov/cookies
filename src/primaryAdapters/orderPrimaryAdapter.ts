@@ -3,9 +3,7 @@ import { diContainer } from 'di/inversify.config';
 
 import { OrderAppService } from '../core/application/services/OrderAppService';
 import { StorageAppService } from '../core/application/services/StorageAppService';
-import { User } from '../core/domain/model/User';
-import { Cart } from '../core/domain/model/Cart';
-import { Order } from '../core/domain/model/Order';
+import { Cart, Order, User } from '../core/domain/model';
 
 interface OrderPrimaryAdapter {
   orders: Order[];

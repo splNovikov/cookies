@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { RouterProvider, createBrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { Provider, storeObserver } from './store/storeV2';
+import { Provider, storeObserver } from 'store';
 
 import { Auth } from './ui/Auth';
 import { User } from './ui/User';

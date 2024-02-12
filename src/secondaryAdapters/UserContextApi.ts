@@ -1,8 +1,8 @@
 import { injectable } from 'inversify';
 
+import { storeObserver } from 'store';
+import { User } from '../core/domain/model';
 import { UserStorageOutputPort } from '../core/application/outputPorts';
-import { User } from '../core/domain/model/User';
-import { storeObserver } from '../store/storeV2';
 
 @injectable()
 export class UserContextApi implements UserStorageOutputPort {

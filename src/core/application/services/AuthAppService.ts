@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify';
 import { DI_TYPES } from 'di/DI_TYPES';
 
-import { User, UserName } from '../../domain/model/User';
+import { User, UserName } from '../../domain/model';
 import { ApiClientOutputPort, UserStorageOutputPort } from '../outputPorts';
 
 @injectable()

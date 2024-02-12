@@ -4,8 +4,7 @@ import { DI_TYPES } from 'di/DI_TYPES';
 
 import { hasAllergy } from '../../domain/services/user';
 import { addProduct, contains } from '../../domain/services/cart';
-import { Product } from '../../domain/model/Product';
-import { Cart } from '../../domain/model/Cart';
+import { Cart, Product } from '../../domain/model';
 import { NotificationOutputPort, UserStorageOutputPort, CartStorageOutputPort } from '../outputPorts';
 
 @injectable()

@@ -1,4 +1,4 @@
-import { Cart } from '../../domain/model/Cart';
+import { Cart } from '../../domain/model';
 
 export interface CartStorageOutputPort {
   getCart(): Cart;

@@ -3,7 +3,7 @@ import React, { ReactElement, useState } from 'react';
 import { useUserPrimaryAdapter } from '../../primaryAdapters/userPrimaryAdapter';
 import { useOrderPrimaryAdapter } from '../../primaryAdapters/orderPrimaryAdapter';
 import { useCartPrimaryAdapter } from '../../primaryAdapters/cartPrimaryAdapter';
-import { UserName } from '../../core/domain/model/User';
+import { UserName } from '../../core/domain/model';
 
 import styles from './Buy.module.css';
 

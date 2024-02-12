@@ -1,9 +1,6 @@
 import React, { ReactElement } from 'react';
 import { cookies } from './fakeData';
-import { Product } from '../core/domain/model/Product';
-import { Cart } from '../core/domain/model/Cart';
-import { User } from '../core/domain/model/User';
-import { Order } from '../core/domain/model/Order';
+import { Cart, Order, Product, User } from '../core/domain/model';
 
 import { ProductDTO } from './ProductDTO';
 

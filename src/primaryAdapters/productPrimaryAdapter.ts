@@ -1,7 +1,7 @@
 import { diContainer } from 'di/inversify.config';
 
 import { ProductAppService } from '../core/application/services/ProductAppService';
-import { Product } from '../core/domain/model/Product';
+import { Product } from '../core/domain/model';
 
 interface ProductPrimaryAdapter {
   products: Product[];

@@ -1,7 +1,7 @@
 import { injectable } from 'inversify';
-import { ApiClientOutputPort } from '../core/application/outputPorts';
 
-import { User, UserName } from '../core/domain/model/User';
+import { User, UserName } from '../core/domain/model';
+import { ApiClientOutputPort } from '../core/application/outputPorts';
 
 import { fakeApi } from './fakeApi';
 
