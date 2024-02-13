@@ -25,7 +25,7 @@ diContainer.bind(DI_TYPES.AuthInputPort).to(AuthAppService);
 diContainer.bind(DI_TYPES.CartInputPort).to(CartAppService);
 diContainer.bind(DI_TYPES.OrderInputPort).to(OrderAppService);
 diContainer.bind(DI_TYPES.ProductInputPort).to(ProductAppService);
-diContainer.bind(StorageAppService).toSelf().inSingletonScope();
+diContainer.bind(DI_TYPES.StorageInputPort).to(StorageAppService);
 diContainer.bind(UserAppService).toSelf().inSingletonScope();
 
 diContainer.bind(DI_TYPES.NotificationOutputPort).to(AlertNotification);

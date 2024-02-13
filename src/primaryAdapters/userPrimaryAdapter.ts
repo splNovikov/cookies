@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { diContainer } from 'di/inversify.config';
+import { DI_TYPES } from 'di/DI_TYPES';
 
+import { StorageInputPort } from '../core/application/inputPorts';
 import { UserAppService } from '../core/application/services/UserAppService';
-import { StorageAppService } from '../core/application/services/StorageAppService';
 import { User, Ingredient } from '../core/domain/model';
 
 interface UserPrimaryAdapter {
@@ -12,7 +13,7 @@ interface UserPrimaryAdapter {
 }
 export function useUserPrimaryAdapter(): UserPrimaryAdapter {
   const userAppService = diContainer.get(UserAppService);
-  const storageAppService = diContainer.get(StorageAppService);
+  const storageAppService = <StorageInputPort>diContainer.get(DI_TYPES.StorageInputPort);
 
   const [user, setUser] = useState(userAppService.getUser());
 
