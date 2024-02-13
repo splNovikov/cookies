@@ -2,6 +2,6 @@ export interface PaymentOutputPort {
   tryPay(amount: PriceCents): Promise<boolean>;
 }
 
-// todo: ApiClient. оплата должна производится на сервере
-// лучшеб сделать интерфейс ApiClient, в котором будет собественный метод оплаты
-// todo:  + мы не хендлим ошибки
+// todo: ApiClient. Payment should be provided at BE side
+// it is better to create interface ApiClient, which has own function "pay"
+// todo:  + error handling
