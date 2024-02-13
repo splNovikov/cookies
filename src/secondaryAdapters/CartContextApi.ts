@@ -15,11 +15,12 @@ export class CartContextApi implements CartStorageOutputPort {
 
   // eslint-disable-next-line class-methods-use-this
   updateCart(cart: Cart): Cart {
-    // todo: new Cart??? so, why do we need addProduct in Cart class then???
-    //  except the place where we use addProduct in CartAppService
-    storeObserver.setState((state) => ({ ...state, cart: new Cart(cart.products) }));
+    // we do new Cart to create a new reference - to make the React determine changes
+    const ref = new Cart(cart.products);
 
-    return cart;
+    storeObserver.setState((state) => ({ ...state, cart: ref }));
+
+    return ref;
   }
 
   // eslint-disable-next-line class-methods-use-this
