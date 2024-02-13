@@ -1,12 +1,13 @@
 import { inject, injectable } from 'inversify';
 import { DI_TYPES } from 'di/DI_TYPES';
 
+import { UserInputPort } from '../inputPorts';
 import { hasAllergy, hasPreference } from '../../domain/services/user';
 import { User, Ingredient } from '../../domain/model';
 import { UserStorageOutputPort, NotificationOutputPort } from '../outputPorts';
 
 @injectable()
-export class UserAppService {
+export class UserAppService implements UserInputPort {
   @inject(DI_TYPES.NotificationOutputPort)
   private notificationOutputService!: NotificationOutputPort;
 

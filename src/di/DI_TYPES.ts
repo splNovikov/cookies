@@ -4,6 +4,7 @@ const DI_TYPES = {
   OrderInputPort: Symbol.for('OrderInputPort'),
   ProductInputPort: Symbol.for('ProductInputPort'),
   StorageInputPort: Symbol.for('StorageInputPort'),
+  UserInputPort: Symbol.for('UserInputPort'),
 
   NotificationOutputPort: Symbol.for('NotificationOutputPort'),
   ApiClientOutputPort: Symbol.for('ApiClientOutputPort'),
