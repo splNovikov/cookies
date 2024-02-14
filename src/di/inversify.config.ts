@@ -9,6 +9,17 @@ import { ProductAppService } from '../core/application/services/ProductAppServic
 import { StorageAppService } from '../core/application/services/StorageAppService';
 import { UserAppService } from '../core/application/services/UserAppService';
 
+import {
+  ApiClientOutputPort,
+  CartStorageOutputPort,
+  NotificationOutputPort,
+  OrderStorageOutputPort,
+  PaymentOutputPort,
+  ProductStorageOutputPort,
+  StorageOutputPort,
+  UserStorageOutputPort,
+} from '../core/application/outputPorts';
+
 import { AlertNotification } from '../secondaryAdapters/AlertNotification';
 import { ApiClient } from '../secondaryAdapters/ApiClient';
 import { Payment } from '../secondaryAdapters/Payment';
@@ -28,13 +39,13 @@ diContainer.bind(DI_TYPES.ProductInputPort).to(ProductAppService);
 diContainer.bind(DI_TYPES.StorageInputPort).to(StorageAppService);
 diContainer.bind(DI_TYPES.UserInputPort).to(UserAppService);
 
-diContainer.bind(DI_TYPES.NotificationOutputPort).to(AlertNotification);
-diContainer.bind(DI_TYPES.ApiClientOutputPort).to(ApiClient);
-diContainer.bind(DI_TYPES.PaymentOutputPort).to(Payment);
-diContainer.bind(DI_TYPES.StorageOutputPort).to(ContextApi);
-diContainer.bind(DI_TYPES.UserStorageOutputPort).to(UserContextApi);
-diContainer.bind(DI_TYPES.OrderStorageOutputPort).to(OrderContextApi);
-diContainer.bind(DI_TYPES.CartStorageOutputPort).to(CartContextApi);
-diContainer.bind(DI_TYPES.ProductStorageOutputPort).to(ProductContextApi);
+diContainer.bind<NotificationOutputPort>(DI_TYPES.NotificationOutputPort).to(AlertNotification);
+diContainer.bind<ApiClientOutputPort>(DI_TYPES.ApiClientOutputPort).to(ApiClient);
+diContainer.bind<PaymentOutputPort>(DI_TYPES.PaymentOutputPort).to(Payment);
+diContainer.bind<StorageOutputPort>(DI_TYPES.StorageOutputPort).to(ContextApi);
+diContainer.bind<UserStorageOutputPort>(DI_TYPES.UserStorageOutputPort).to(UserContextApi);
+diContainer.bind<OrderStorageOutputPort>(DI_TYPES.OrderStorageOutputPort).to(OrderContextApi);
+diContainer.bind<CartStorageOutputPort>(DI_TYPES.CartStorageOutputPort).to(CartContextApi);
+diContainer.bind<ProductStorageOutputPort>(DI_TYPES.ProductStorageOutputPort).to(ProductContextApi);
 
 export { diContainer };
